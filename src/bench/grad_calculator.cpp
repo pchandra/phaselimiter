@@ -12,7 +12,7 @@ template <class SimdType>
 void BM_GradCalculatorEval(benchmark::State& state) {
     typedef typename SimdType::element_type Float;
     
-    tbb::task_scheduler_init tbb_init(state.range(0));
+    //tbb::task_scheduler_init tbb_init(state.range(0));
     
     const int waveLen = 44100 * 10;
     Float *wave = (Float *)bakuage::AlignedMalloc(sizeof(Float) * waveLen, PL_MEMORY_ALIGN);
@@ -54,7 +54,7 @@ template <class SimdType>
 static void BM_GradCalculatorGrad(benchmark::State& state) {
     typedef typename SimdType::element_type Float;
     
-    tbb::task_scheduler_init tbb_init(state.range(0));
+    //tbb::task_scheduler_init tbb_init(state.range(0));
     
     const int waveLen = 44100 * 10;
     Float *wave = (Float *)bakuage::AlignedMalloc(sizeof(Float) * waveLen, PL_MEMORY_ALIGN);

@@ -79,8 +79,8 @@ int main(int argc, char* argv[]) {
 		std::cerr << "Ipp initialized " << lib->Name << " " << lib->Version << std::endl;
 		PrintMemoryUsage();
 
-		tbb::task_scheduler_init tbb_init(FLAGS_worker_count ? FLAGS_worker_count : tbb::task_scheduler_init::default_num_threads());
-		std::cerr << "TBB default_num_threads:" << tbb::task_scheduler_init::default_num_threads() << std::endl;
+		//tbb::task_scheduler_init tbb_init(FLAGS_worker_count ? FLAGS_worker_count : tbb::task_scheduler_init::default_num_threads());
+		//std::cerr << "TBB default_num_threads:" << tbb::task_scheduler_init::default_num_threads() << std::endl;
 
 
 		if (FLAGS_mode == "default") {

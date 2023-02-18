@@ -40,7 +40,7 @@ add_definitions(-DARMA_DONT_USE_HDF5)
 if(DEFINED ENV{IPPROOT})
     set(IPPROOT $ENV{IPPROOT})
 else()
-    set(IPPROOT /opt/intel/ipp)
+    set(IPPROOT /opt/intel/oneapi/ipp/latest)
 endif()
 message(${IPPROOT})
 
@@ -110,7 +110,7 @@ elseif(APPLE)
   else()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=core-avx2 -mtune=core-avx2 -mavx2 -mfma")
   endif()
-  SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -rpath /opt/intel/ipp/lib")
+  SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -rpath /opt/intel/oneapi/ipp/latest/lib")
 
   find_package(Boost REQUIRED COMPONENTS filesystem math_tr1 serialization system)
 
@@ -131,10 +131,10 @@ elseif(APPLE)
      libboost_iostreams.a
      libtbb.a
      libtbbmalloc.a
-     /opt/intel/ipp/lib/libippi.dylib
-     /opt/intel/ipp/lib/libipps.dylib
-     /opt/intel/ipp/lib/libippvm.dylib
-     /opt/intel/ipp/lib/libippcore.dylib
+     /opt/intel/oneapi/ipp/latest/lib/libippi.dylib
+     /opt/intel/oneapi/ipp/latest/lib/libipps.dylib
+     /opt/intel/oneapi/ipp/latest/lib/libippvm.dylib
+     /opt/intel/oneapi/ipp/latest/lib/libippcore.dylib
      libbenchmark.a
      libpng.a
      libz.a
@@ -144,13 +144,13 @@ elseif(APPLE)
   link_directories(
     ${Boost_LIBRARY_DIRS}
     ${IPPROOT}/lib
-    /opt/intel/tbb/lib
+    /opt/intel/oneapi/tbb/latest/lib
     /usr/local/opt/libtensorflow/lib
   )
   include_directories(
     ${Boost_INCLUDE_DIRS}
     ${IPPROOT}/include
-    /opt/intel/tbb/include
+    /opt/intel/oneapi/tbb/latest/include
   )
   set(TINY_PROCESS_SOURCES
     deps/tiny-process-library/process.hpp
@@ -205,11 +205,11 @@ else()
      dl
   )
   link_directories(
-    /opt/intel/ipp/lib/intel64
+    /opt/intel/oneapi/ipp/latest/lib
   )
   include_directories(
   	${BAKUAGE_PREBUILT_DIR}/include
-    /opt/intel/ipp/include
+    /opt/intel/oneapi/ipp/latest/include
   )
   set(TINY_PROCESS_SOURCES
     deps/tiny-process-library/process.hpp

@@ -195,7 +195,7 @@ TEST(SoundQuality2Calculator, Validation) {
     other_cov_non_diag_stats.AddParent(&total_stats);
     
     // CircleCIでメモリ使いすぎで落ちるので並列数を制限する
-    tbb::task_scheduler_init tbb_init(FLAGS_sound_quality2_worker_count ? FLAGS_sound_quality2_worker_count : tbb::task_scheduler_init::default_num_threads());
+    //tbb::task_scheduler_init tbb_init(FLAGS_sound_quality2_worker_count ? FLAGS_sound_quality2_worker_count : tbb::task_scheduler_init::default_num_threads());
     for (int cv_i = 0; cv_i < cv_count; cv_i++) {
         // 全てのreference、全ての特徴量に対して、1dB変化させたときのsound_qualityを計算する
         // スペクトル平均、共分散(対角)、共分散(非対角)に分類して統計を取り

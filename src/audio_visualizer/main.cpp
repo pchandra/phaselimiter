@@ -6,7 +6,7 @@
 #include "CImg.h"
 #include "ipp.h"
 #include "tbb/tbb.h"
-#include "tbb/pipeline.h"
+#include "tbb/parallel_pipeline.h"
 #include "tbb/scalable_allocator.h"
 #include "tbb/cache_aligned_allocator.h"
 #include <boost/filesystem.hpp>
@@ -165,8 +165,8 @@ int main(int argc, char* argv[]) {
 
     // TBBの初期化とか (ここで初期化しておくと、毎回初期化しなくても良いらしい)
     // https://www.xlsoft.com/jp/products/intel/perflib/tbb/41/tbb_userguide_lnx/reference/task_scheduler/task_scheduler_init_cls.htm
-    tbb::task_scheduler_init tbb_init(FLAGS_worker_count ? FLAGS_worker_count : tbb::task_scheduler_init::default_num_threads());
-    std::cerr << "TBB default_num_threads:" << tbb::task_scheduler_init::default_num_threads() << std::endl;
+    //tbb::task_scheduler_init tbb_init(FLAGS_worker_count ? FLAGS_worker_count : tbb::task_scheduler_init::default_num_threads());
+    //std::cerr << "TBB default_num_threads:" << tbb::task_scheduler_init::default_num_threads() << std::endl;
     PrintMemoryUsage();
 
     bakuage::SndfileWrapper infile;
@@ -319,9 +319,9 @@ int main(int argc, char* argv[]) {
         }
     };
     tbb::parallel_pipeline(256,
-                           tbb::make_filter<void, bakuage::AlignedPodVector<float> *>(tbb::filter::serial, filter1_func)
-                           & tbb::make_filter<bakuage::AlignedPodVector<float> *,BufferPtr>(tbb::filter::parallel, filter2_func)
-                           & tbb::make_filter<BufferPtr, void>(tbb::filter::serial, filter3_func)
+                           tbb::make_filter<void, bakuage::AlignedPodVector<float> *>(tbb::filter_mode::serial_in_order, filter1_func)
+                           & tbb::make_filter<bakuage::AlignedPodVector<float> *,BufferPtr>(tbb::filter_mode::parallel, filter2_func)
+                           & tbb::make_filter<BufferPtr, void>(tbb::filter_mode::serial_in_order, filter3_func)
                            );
     std::fflush(stdout);
 
