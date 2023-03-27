@@ -272,7 +272,7 @@ namespace phase_limiter {
                 if (task.bg == task.ed)
                     return;
                 TaskType *t = task_allocator_.allocate(1);
-                task_allocator_.construct(t, task);
+                //task_allocator_.construct(t, task);
                 tasks.push_back(t);
             }
             
@@ -412,7 +412,7 @@ namespace phase_limiter {
             void clear() {
                 for (size_t j = 0; j < tasks.size(); j++) {
                     tasks[j]->clearCache();
-                    task_allocator_.destroy(tasks[j]);
+                    //task_allocator_.destroy(tasks[j]);
                     task_allocator_.deallocate(tasks[j], 1);
                 }
                 tasks.clear();
