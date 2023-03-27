@@ -161,7 +161,7 @@ else()
   # -fopt-info-vec-optimized-missed
   # auto vectorizeはそれほど速くならない。(理由: auto vectorizeできるようなところはそもそも単純で遅くない？)
   # 出力が冗長になるのでオフにした
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -frecord-gcc-switches -Werror -Wall -Wno-sign-compare -Wno-unused-variable -Wno-unused-but-set-variable")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -frecord-gcc-switches -Wall -Wno-sign-compare -Wno-unused-variable -Wno-unused-but-set-variable")
   if(SANDYBRIDGE_SUPPORT)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=sandybridge -mtune=sandybridge -mavx")
   else()
@@ -194,7 +194,7 @@ else()
      libipps.a
      libippcore.a
      libippvm.a
-     libbenchmark.a
+     libbenchmark.so
      libpng.a
      libz.a
      liblapack.so # require for armadillo
@@ -205,11 +205,13 @@ else()
      dl
   )
   link_directories(
-    /opt/intel/oneapi/ipp/latest/lib
+    /opt/intel/oneapi/ipp/latest/lib/intel64
+    /opt/intel/oneapi/tbb/latest/lib/intel64/gcc4.8
   )
   include_directories(
   	${BAKUAGE_PREBUILT_DIR}/include
     /opt/intel/oneapi/ipp/latest/include
+    /opt/intel/oneapi/tbb/latest/include
   )
   set(TINY_PROCESS_SOURCES
     deps/tiny-process-library/process.hpp

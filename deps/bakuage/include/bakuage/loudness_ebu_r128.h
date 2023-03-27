@@ -2,6 +2,7 @@
 #define BAKUAGE_LOUDNESS_EBU_R128_H_
 
 #include <vector>
+#include <cstddef>
 
 namespace bakuage {
 namespace loudness_ebu_r128 {
