@@ -31,7 +31,7 @@ sudo apt-get update
 sudo apt-get install -y intel-basekit
 
 # Build it
-cmake .
+cmake -DCMAKE_CXX_FLAGS=-DTBB_ALLOCATOR_TRAITS_BROKEN .
 make
 
 # Get runtime deps
