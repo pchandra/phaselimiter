@@ -9,12 +9,6 @@ sudo apt-get dist-upgrade -y
 # Get the basic build tools
 sudo apt-get install -y build-essential cmake
 
-# Get the code
-#git clone https://github.com/License-Lounge/phaselimiter
-#cd phaselimiter
-#git submodule init
-#git submodule update
-
 # Get the build deps
 sudo apt-get install -y libboost-math-dev libsndfile1-dev libgflags-dev \
   libboost-system-dev libboost-filesystem-dev libboost-serialization-dev \
@@ -30,7 +24,12 @@ echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt
 sudo apt-get update
 sudo apt-get install -y intel-basekit
 
-# Build it
+# Get the dependencies
+git submodule init
+git submodule update
+
+# The TBB_ALLOCATOR_TRAITS_BROKEN flag is needed since 
+# the code relies on some of those helper methods
 cmake -DCMAKE_CXX_FLAGS=-DTBB_ALLOCATOR_TRAITS_BROKEN .
 make
 
