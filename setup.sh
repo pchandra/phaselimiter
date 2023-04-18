@@ -79,7 +79,7 @@ sudo apt-get install -y python3 python3-pip
 
 python3 -m pip install demucs
 
-python3 -m pip install whisper
+python3 -m pip install openai-whisper
 
 python3 -m pip install basic-pitch
 
