@@ -95,4 +95,4 @@ popd
 python3 -m pip install librosa matplotlib numpy numba
 
 # Dependencies for running the actual lab-director components
-python3 -m pip install Flask Flask-shelve zmq
+python3 -m pip install Flask Flask-shelve zmq boto3
