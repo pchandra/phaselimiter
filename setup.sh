@@ -77,14 +77,22 @@ sudo apt-get install -y intel-basekit
 
 sudo apt-get install -y python3 python3-pip
 
+# Third-party tools that we run
 python3 -m pip install demucs
 
 python3 -m pip install openai-whisper
 
 python3 -m pip install basic-pitch
 
+# Get the home-made tools too
 pushd .
 cd ~/
 git clone https://github.com/License-Lounge/wav-mixer
 git clone https://github.com/License-Lounge/key-bpm-finder
 popd
+
+# Dependencies for the home-made tools we just cloned
+python3 -m pip install librosa matplotlib numpy numba
+
+# Dependencies for running the actual lab-director components
+python3 -m pip install Flask Flask-shelve zmq

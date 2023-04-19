@@ -1,8 +1,8 @@
 #!/bin/bash
 
-DIR=`dirname "$(realpath ./bin/phase_limiter)"`
+DIR=`dirname "$(realpath $0)"`
 
 if [ X"$TBBROOT" == X ]; then \
-    . /opt/intel/oneapi/setvars.sh
+    source /opt/intel/oneapi/setvars.sh --
 fi
 $DIR/phase_limiter.real $@
