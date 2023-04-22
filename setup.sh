@@ -92,7 +92,7 @@ git clone https://github.com/License-Lounge/key-bpm-finder
 popd
 
 # Dependencies for the home-made tools we just cloned
-python3 -m pip install librosa matplotlib numpy numba
+python3 -m pip install librosa matplotlib numpy numba pycairo
 
 # Dependencies for running the actual lab-director components
 python3 -m pip install Flask Flask-shelve zmq boto3 pytaglib
