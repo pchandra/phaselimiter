@@ -38,7 +38,7 @@ git submodule update
 
 # The TBB_ALLOCATOR_TRAITS_BROKEN flag is needed since 
 # the code relies on some of those helper methods
-cmake -DCMAKE_CXX_FLAGS=-DTBB_ALLOCATOR_TRAITS_BROKEN .
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-DTBB_ALLOCATOR_TRAITS_BROKEN .
 make
 
 # Get runtime deps
